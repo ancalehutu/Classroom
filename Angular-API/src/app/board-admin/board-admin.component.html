@@ -1,0 +1,137 @@
+<div class="container">
+  <header class="jumbotron">
+    <h2>{{ content }}</h2>
+  </header>
+  <h3>Options</h3>
+  <button style= "margin:10px;" type="button" class="btn btn-primary" (click)="GetStudents()"><i class="fa fa-plus"></i> Students</button>
+  <button style= "margin:10px;" type="button" class="btn btn-primary" (click)="GetTeachers()"><i class="fa fa-plus"></i> Teachers</button>
+  <button style= "margin:10px;" type="button" class="btn btn-primary" (click)="GetClasses()"><i class="fa fa-plus"></i> Classes</button>
+  <div class="list row" *ngIf = "isShowStudent">
+    <div class="col-md-6">
+      <h4>Students List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let student of students; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveStudent(student, i)"
+        >
+          {{ student.id_student }} {{ student.firstname }} {{ student.lastname }}
+        </li>
+      </ul>
+      <a class="badge badge-warning" routerLink="/admin/add/student">
+        Add Student
+      </a>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentStudent">
+        <h4>Student</h4>
+        <div>
+          <label><strong>Id:</strong></label> {{ currentStudent.id_student }}
+        </div>
+        <div>
+          <label><strong>Firstname:</strong></label> {{ currentStudent.firstname }}
+        </div>
+        <div>
+          <label><strong>Lastname:</strong></label>
+          {{ currentStudent.lastname }}
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/admin/{{currentStudent.id_student}}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentStudent">
+        <br />
+        <p>Please click on a Student...</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="list row" *ngIf = "isShowTeacher">
+      <div class="col-md-6">
+        <h4>Teachers List</h4>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let teacher of teachers; let i = index"
+            [class.active]="i == currentIndexTeacher"
+            (click)="setActiveTeacher(teacher, i)"
+          >
+            {{ teacher.id_teacher }} {{ teacher.firstname }} {{ teacher.lastname }}
+          </li>
+        </ul>
+        <a class="badge badge-warning" routerLink="/admin/add/teacher">
+          Add Teacher
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div *ngIf="currentTeacher">
+          <h4>Teacher</h4>
+          <div>
+            <label><strong>Id:</strong></label> {{ currentTeacher.id_teacher }}
+          </div>
+          <div>
+            <label><strong>Firstname:</strong></label> {{ currentTeacher.firstname }}
+          </div>
+          <div>
+            <label><strong>Lastname:</strong></label>
+            {{ currentTeacher.lastname }}
+          </div>
+    
+          <a class="badge badge-warning" routerLink="/admin/teacher/{{currentTeacher.id_teacher}}">
+            Edit
+          </a>
+        </div>
+    
+        <div *ngIf="!currentTeacher">
+          <br />
+          <p>Please click on a Teacher...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="list row" *ngIf = "isShowClass">
+      <div class="col-md-6">
+        <h4>Classes List</h4>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let class of classes; let i = index"
+            [class.active]="i == currentIndexClass"
+            (click)="setActiveClass(class, i)"
+          >
+            {{ class.id_classes }} {{ class.name }}
+          </li>
+        </ul>
+        <a class="badge badge-warning" routerLink="/admin/add/class">
+          Add Class
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div *ngIf="currentClass">
+          <h4>Class</h4>
+          <div>
+            <label><strong>Id:</strong></label> {{ currentClass.id_classes }}
+          </div>
+          <div>
+            <label><strong>Name class:</strong></label> {{ currentClass.name }}
+          </div>
+    
+          <a class="badge badge-warning" routerLink="/admin/class/{{currentClass.id_classes}}">
+            Edit
+          </a>
+        </div>
+    
+        <div *ngIf="!currentClass">
+          <br />
+          <p>Please click on a Class...</p>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+  
+

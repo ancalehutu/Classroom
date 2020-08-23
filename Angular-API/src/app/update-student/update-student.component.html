@@ -1,0 +1,46 @@
+<div *ngIf="students" class="edit-form">
+  <h4>Student</h4>
+  <form>
+    <div *ngFor="let student of students">
+    <div class="form-group">
+      <label for="id_student">Id</label>
+      <input
+      type="text"
+        class="form-control"
+        id="id_student"
+        [(ngModel)]="student.id_student"
+        name="id_student"
+      />
+    </div>
+    <div class="form-group">
+      <label for="firstname">Firstname</label>
+      <input
+      type="text"
+        class="form-control"
+        id="firstname"
+        [(ngModel)]="student.firstname"
+        name="firstname"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Lastname</label>
+      <input
+      type="text"
+        class="form-control"
+        id="lastname"
+        [(ngModel)]="student.lastname"
+        name="lastname"
+      />
+    </div>
+  </div>
+  </form>
+  <button type="submit" class="badge badge-success" (click)="updateStudent()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!students">
+  <br />
+  <p>Cannot access this Student</p>
+</div>

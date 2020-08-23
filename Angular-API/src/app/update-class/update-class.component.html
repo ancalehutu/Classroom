@@ -1,0 +1,36 @@
+<div *ngIf="classes" class="edit-form">
+  <h4>Class</h4>
+  <form>
+    <div *ngFor="let class of classes">
+    <div class="form-group">
+      <label for="id_classes">Id</label>
+      <input
+      type="text"
+        class="form-control"
+        id="id_classes"
+        [(ngModel)]="class.id_classes"
+        name="id_classes"
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">Name class</label>
+      <input
+      type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="class.name"
+        name="name"
+      />
+    </div>
+  </div>
+  </form>
+  <button type="submit" class="badge badge-success" (click)="updateClass()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!classes">
+  <br />
+  <p>Cannot access this Class</p>
+</div>

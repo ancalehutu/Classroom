@@ -1,0 +1,46 @@
+<div *ngIf="teachers" class="edit-form">
+  <h4>Teacher</h4>
+  <form>
+    <div *ngFor="let teacher of teachers">
+    <div class="form-group">
+      <label for="id_teacher">Id</label>
+      <input
+      type="text"
+        class="form-control"
+        id="id_teacher"
+        [(ngModel)]="teacher.id_teacher"
+        name="id_teacher"
+      />
+    </div>
+    <div class="form-group">
+      <label for="firstname">Firstname</label>
+      <input
+      type="text"
+        class="form-control"
+        id="firstname"
+        [(ngModel)]="teacher.firstname"
+        name="firstname"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Lastname</label>
+      <input
+      type="text"
+        class="form-control"
+        id="lastname"
+        [(ngModel)]="teacher.lastname"
+        name="lastname"
+      />
+    </div>
+  </div>
+  </form>
+  <button type="submit" class="badge badge-success" (click)="updateTeacher()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!teachers">
+  <br />
+  <p>Cannot access this Teacher</p>
+</div>
